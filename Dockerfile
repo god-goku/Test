@@ -19,7 +19,7 @@ USER builder
 WORKDIR /home/builder
 
 # Install required packages for Android ROM build
-RUN git clone https://raw.githubusercontent.com/akhilnarang/scripts && \
+RUN git clone https://www.github.com/akhilnarang/scripts && \
     chmod a+x scripts/android_build_env.sh && \
     bash scripts/android_build_env.sh && \
     rm -rf android_build_env.sh
