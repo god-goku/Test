@@ -8,7 +8,6 @@ RUN apt-get update && \
     dpkg-reconfigure -f noninteractive tzdata && \
     apt-get install -y wget git curl gnupg && \
     apt install sudo -y && \
-    apt-get remove -y wget && \
     apt-get autoremove -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -19,9 +18,9 @@ USER builder
 WORKDIR /home/builder
 
 # Install required packages for Android ROM build
-RUN git clone https://www.github.com/akhilnarang/scripts && \
-    chmod a+x scripts/android_build_env.sh && \
-    bash scripts/android_build_env.sh && \
+RUN wget https://raw.githubusercontent.com/akhilnarang/scripts/master/setup/android_build_env.sh && \
+    chmod a+x android_build_env.sh && \
+    bash android_build_env.sh && \
     rm -rf android_build_env.sh
 
 # Define build environment variables
